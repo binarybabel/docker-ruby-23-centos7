@@ -1,10 +1,11 @@
 FROM centos/ruby-23-centos7
 
-MAINTAINER BinaryBabel OSS <code-czar@binbab.org>
+MAINTAINER BinaryBabel OSS <oss@binarybabel.org>
 
 USER 0
 
-RUN yum install -y --setopt=tsflags=nodocs file ImageMagick sshpass && \
+RUN rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm && \
+    yum install -y --setopt=tsflags=nodocs file ImageMagick sshpass && \
     yum remove -y nodejs npm && \
     yum clean all -y
 
